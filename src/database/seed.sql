@@ -9,41 +9,25 @@ DROP TABLE IF EXISTS categorias;
 
 
 CREATE TABLE usuarios (
-	id_usuario serial primary key,
-	nombre varchar (50) ,
-	apellido varchar (50),
-	rut varchar(10),
-	telefono varchar (10),
-	direccion varchar(100),
-	numero_de_direccion int,
-	correo varchar (50) UNIQUE,
-	password varchar(100),
-	rol varchar(20)
-);
+usuarios (
+		usuario_id SERIAL PRIMARY KEY,
+		nombre VARCHAR(50),
+		apellido VARCHAR(50),
+		direccion VARCHAR(150),
+		email VARCHAR(100) UNIQUE,
+		password VARCHAR(250)
+	);
 
---SELECT nombre,apellido,rut,correo,telefono, direccion,numero_de_direccion,comuna FROM usuarios WHERE email = $1
-
- SELECT * FROM usuarios;
+-- SELECT * FROM usuarios;
 --     SELECT * FROM platos;
 
--- SELECT nombre,apellido,rut,telefono,correo,password,direccion,numero_de_direccion,comuna FROM usuarios WHERE correo = 1;
-
--- SELECT nombre, apellido, rut, telefono, correo, password, direccion, numero_de_direccion, comuna
--- FROM usuarios
--- WHERE correo = $1;
-
-
 --    SELECT * FROM  usuarios WHERE id_usuario = 1
--- INSERT INTO usuarios (nombre  ,	apellido ,	rut ,telefono ,direccion,numero_de_direccion,correo ,password,rol) VALUES(
+-- INSERT INTO usuarios (nombre  , apellido , direccion,correo ,password) VALUES(
 --   'Juan',
 --   'Pérez',
---   '12345678-9',
---   '+1234567890',
 --   'Calle 123',
---   '123',
 --   'juan@example.com',
 --   '123456',
---   'usuario'
 -- )
 
 
@@ -53,8 +37,7 @@ CREATE TABLE categorias (
 );
 
 INSERT INTO categorias (nombre_categoria) VALUES 
-	('plato fondo'),
-	('postre');
+	('Manga');
 
 
 CREATE TABLE platos (
@@ -71,18 +54,18 @@ CREATE TABLE platos (
 
 -- INSERT INTO platos (nombre, ingredientes, monto, img_url, descripcion, id_categoria)
 -- VALUES
---     ('PAPAS RELLENAS', '["Papas", "2 huevos duros", "250 gramos de carne molida", "aceitunas negras","pimienta negra", "oregano"]', 5950, 'https://www.gourmet.cl/wp-content/uploads/2016/09/Papas_Rellenas_video_Retoques_01-570x458.jpg', 'Consiste en una masa frita de papa cocida, rellena de carne de vacuno, pollo, queso, cebollas, aceitunas, huevos duros, entre otros ingredientes picados.', 1),
---     ('CHILI CON CARNE', '["Carne Molida","Pulpa de tomate","Porotos negros","Choclo desgranado"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2021/08/Chili-con-Carne-Ajustada-Web-570x458.jpg', 'Plato se utiliza carne de res cortada en trozos que serán dorados en una sartén junto con sal, pimienta, chiles verdes, rojos y de árbol.', 1),
---     ('POLLO TERIYAKI', '["Pechugas de pollo", "Arroz blanco", "Brócoli al vapor"," Salsa Teriyaki"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2021/08/Pollo_Teriyaki_Interior_Gourmet.jpg', 'Técnica de cocción de la cocina japonesa en la cual los alimentos son asados al horno en un adobo de salsa dulce.', 1),
---     ('CAZUELA DE ALBÓNDIGAS', '["Carne Molida","Marraqueta","Huevos","Zapallo amarillo","Papas"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2016/09/recetas-gourmet-marzo-2021-internet-7-1-570x458.jpg', 'Combinación de albóndigas caseras con caldo y verduras. Las albóndigas están hechas con una mezcla de carne picada, pan rallado, huevos y especias.', 1),
---     ('FETUCCINI CON SALSA DE AZAFRÁN Y OSTIONES', '["Pasta a eleccion","ostiones sin concha","Vino blanco","Crema","queso parmesano rallado"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2012/07/fetuccini-con-salsa-de-azafran-y-ostiones.jpg', 'Se combinan con una cremosa salsa de azafrán que le da un color dorado y un sabor delicado y aromático. Los ostiones frescos añaden un toque marino y textura suave a esta deliciosa preparación.', 1),
---     ('LOMO VETADO AL HORNO', '["Lomo vetado","Pimienta","Salsa de Soya","Aceite de oliva","Vino blanco"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2012/07/lomo-vetado-con-salsa-de-champinones.jpg', 'El lomo vetado se sazona con especias y se hornea lentamente, lo que permite que la carne se cocine de manera uniforme y conserve su jugosidad.', 1),
---     ('POLLO AL CURRY', '["Pechugas de pollo", "Curry","Almendra sin piel", "Salsa Blanca"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2016/09/Pollo-al-Curry-ajustada-web-570x458.jpg', 'Es un plato sabroso y aromático que combina trozos de pollo tierno con una salsa de curry llena de especias y sabores exóticos.', 1),
---     ('QUICHE VEGETARIANO CON MASA DE QUINOA', '["Aceite de oliva","Quinoa tricolor","Pimienta Negra Molida","Pimentón rojo","Zapallo italiano", "Huevos","Crema de leche"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2021/08/Quiche_Adaptada_Gourmet.jpg', 'Una deliciosa variante del clásico quiche que se caracteriza por ser apto para vegetarianos y utilizar una masa hecha a base de quinoa en lugar de la tradicional masa de harina de trigo.', 1),
---     ('TORTILLA DE PAPAS', '["Papas grandes peladas","Pimentón rojo","Huevos","Merquén","Pimienta Negra"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2011/04/tortilla_papas.jpg', 'Es un plato clásico de la cocina española y consiste en una mezcla de papas (patatas) y huevos. Se trata de una especie de torta o pastel hecho a base de rodajas finas de papas cocidas en aceite y luego mezcladas con huevos batidos.', 1),
---     ('CARNE ASADA AL HORNO', '["Ají de Color", "Punta de Ganso", "Papas con Cáscara", "Pimienta Negra Molida", "Vino Blanco"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2018/04/1200x627-1-570x458.jpg', 'Una deliciosa preparación de carne que se cocina en el horno para lograr una cocción uniforme y un sabor jugoso.', 1),
---     ('PESCADO CON COSTRA DE QUÍNOA', '["Filetes de pescado (salmón, congrio)","Mostaza","Quínoa blanca","Quínoa roja","Queso parmesano"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2015/04/Pescado-con-Costra-de-Quinoa.jpg', 'Una deliciosa preparación en la que se utiliza quinoa para crear una capa crujiente alrededor del pescado. Es una opción saludable y sabrosa que combina la textura crujiente de la quinoa con la jugosidad y el sabor del pescado.', 1),
---     ('SANDWICH VEGETARIANO', '["Leche","Huevos", "Sal", "Harina", "Aceite"]', 7250, 'https://www.gourmet.cl/wp-content/uploads/2016/09/sandwich-vegetariano.jpg', 'Una opción deliciosa y saludable para aquellos que prefieren evitar la carne en su alimentación. Este tipo de sándwich se compone de diferentes ingredientes vegetarianos que se colocan entre dos rebanadas de pan.', 1);
+--     ('Shaman King 01', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 16998, 'https://i1.whakoom.com/large/06/3c/90fcc13fdfcb4c2d8d60f36aac9d3b6d.jpg', 'Los shamanes son personas que pueden interactuar con los dioses, los espíritus y las almas de los difuntos. Yoh tiene ese poder y quiere convertirse en el rey shaman, alguien capaz de establecer contacto con los Grandes Espíritus, lo que le permitiría cambiar el mundo a su antojo. Para conseguirlo, tendrá que hacerse con un espíritu que lo acompañe y participar en el Shaman Fight: un torneo que se celebra cada 500 años, consiguiendo por el camino un buen grupo de aliados y amigos. Aunque también encontrará rivales de lo más variopintos y siniestros, algunos con intenciones bastante diferentes a las de Yoh.', Man),
+--     ('Spy X Family 04', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 9890, 'https://www.freakshowstore.com/imagenes/poridentidad?identidad=c7d21380-bcfb-4cf5-b259-4d5ac9dc633f&amp;ancho=900&amp;alto=', 'detaLos países de Westalis y Ostania libran desde hace años una guerra fría donde el espionaje y los asesinatos son moneda corriente. El inigualable espía conocido como Twilight es el mejor agente de Westalis que tiene por objetivo encargarse del poderoso Donovan Desmond. El problema es que Desmond es un ermitaño antisocial cuyas únicas apariciones públicas son en los actos escolares de su hijo. Twilight deberá acercarse al objetivo lo suficiente como para desbaratar su agenda secreta. Para ello, sólo deberá simular que es un hombre de familia… con el pequeño detalle de que sólo tiene 7 días para conseguir la familia ideal. Es por eso que bajo la identidad del psiquiatra Loid Forger, Twilight reclutará a Yor Briar, una civil ostaniana que quiere tener bajo perfil y Anya, una huerfanita que sólo busca una familia cariñosa, para hacer las partes de esposa e hija respectivamente. Pero resulta que este par tampoco es nada normal, especialmente si tenemos en cuenta que Yor es una asesina profesional buscada por ambos bandos y Anya es una prófuga de un laboratorio secreto donde consiguió poderes telepáticos.', Manga),
+--     ('Rent A Girlfriend 02', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 9890, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2021/05/0091.jpg', 'Descubre Rent-A-Girlfriend, un manga lleno de romance y comedia. Acompaña a Kazuya en su inesperada relación con Chizuru, una novia de alquiler. ¡Déjate atrapar por esta historia llena de giros emocionantes y momentos divertidos!', Manga),
+--     ('Hanako-Kun, El Fantasma Del Lavabo 04', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 9889, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2021/06/HANAKO4.jpg', 'Nene Yashiro es una estudiante de primero de bachillerato que asiste a la Academia Kamome, famosa por sus sucesos paranormales y por albergar también los siete míticos misterios. El séptimo misterio no es otro que Hanako, una chica que habita los lavabos del tercer piso de la academia y que se supone que concede deseos con el incentivo adecuado. Sin embargo, cuando Nene decide invocarla para conseguir enamorar al chico de sus sueños, se encuentra la sorpresa de que no se trata de una chica, sino de un chico. Después de que ese deseo fracase, en otro intento desesperado, Nene se come un objeto de Hanako que sirve para un conseguir pareja, pero lanza una maldición sobre quien lo consuma. Con tal de salvarla, Hanako también se lo come, pero a cambio hará que Nene tenga que trabajar para él como su asistenta.    Hanako se encarga de mantener la paz entre los espíritus y los humanos. Para ello se deshace de las apariciones malignas, sin importar los medios que tenga que utilizar. Poco a poco se va desgranando el pasado de Hanako mientras se descubren los secretos que se esconden entre los siete misterios de la academia.', Manga),
+--     ('Komi-San No Puede Comunicarse 02', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 19889, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2021/12/komi.jpg', 'Hitohito Tadano acaba de empezar bachillerato anhelando que sea un período de paz y tranquilidad, pero sus planes se truncan cuando acaba sentado al lado de la perfecta Shoko Komi. Ella es guapa, inteligente, educada y hasta huele bien. Pero tiene 0 dotes sociales y no sabe cómo narices comunicarse con los demás. Es ahí cuando Tadano decide tomar cartas en el asunto y se propone ayudar a su compañera hasta que consiga cien amigos, y con suerte algo más.', Manga),
+--     ('Alice In Borderland 01', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 15299, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2021/06/shaman-5.jpg', 'Una historia repleta de acción, suspense y macabros juegos, protagonizada por tres amigos que acaban teletransportados a un mundo paralelo aparentemente igual que el nuestro, pero sólo habitado por aquellos desafortunados que están obligados a participar en el juego de supervivencia. La crueldad y variedad de los puzzles y la naturaleza de las personas y sus instintos, marcan esta historia que nos sorprende una y otra vez con giros y situaciones extrañas e inesperadas.', Manga),
+--     ('Shaman King 05', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN, Sobrenarutal"]', 15299, 'https://www.gourmet.cl/wp-content/uploads/2016/09/Pollo-al-Curry-ajustada-web-570x458.jpg', 'Los shamanes son personas que pueden interactuar con los dioses, los espíritus y las almas de los difuntos. Yoh tiene ese poder y quiere convertirse en el rey shaman, alguien capaz de establecer contacto con los Grandes Espíritus, lo que le permitiría cambiar el mundo a su antojo. Para conseguirlo, tendrá que hacerse con un espíritu que lo acompañe y participar en el Shaman Fight: un torneo que se celebra cada 500 años, consiguiendo por el camino un buen grupo de aliados y amigos. Aunque también encontrará rivales de lo más variopintos y siniestros, algunos con intenciones bastante diferentes a las de Yoh.', Manga),
+--     ('Higehiro 01', '["Peso 0,3 kg", "Dimensiones 18 × 15 ×3 cm", "Editorial Ivrea España", "País de origen España", "Demografía/Género Acción, SHONEN"]', 9898, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2022/02/Higehiro-1.jpg', 'Yoshida ha reunido el coraje para declararse a su jefa, pero esta le da calabazas. Para ahogar las penas, decide pillar una buena cogorza con un amigo suyo y cuando está volviendo, conoce a Sayu, una chica que está deambulando por ahí. Aunque esta in tenta seducirlo, Yoshida no cede, pero deja que se quede en su apartamento a dormir. Al día siguiente, después de conocer la historia de Sayu y cómo esta se ha escapado de casa y ha ido malviviendo y usando el sexo para poder sobrevivir, decide acogerla en su casa. Así empieza una relación de lo más dispar, llena de malentendidos y mo mentos divertidos, pero con el dramático pasado de Sayu de fondo. ¿Qué la empujó a tomar la decisión de huir y vivir de esa manera?', Manga),
+--     ('Pppppp 02', '["Peso 0,29 kg", "Dimensiones 18 x 15 x 3 cm", "Editorial Editorial", "País de origen España", "Demografía/Género Música, SHONEN"]', 10798, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2023/06/9788419816276.jpg', 'Hubo una vez un pianista prodigioso llamado Gakuon Otogami, cuyo nombre ha quedado grabado en el panteón de los mejores de la historia. Pasaron los años y Gakuon tuvo siete hijos que adoran tocar el piano como él, pero no todos heredaron sus habilidades. Lacky, el más mediocre de los siete, lo dará todo por vencer a su destino. A su madre le queda poco tiempo de vida, pero esta lo anima a que demuestre que alguien sin talento también puede ser un buen músico, así que le promete que triunfará como pianista.    PPPPPP es un doble pianissimo, una nota complicada de tocar por la delicadeza que requiere, en contraste con la fuerza que se usa para una normal. Estamos ante un manga bastante diferente a lo habitual, aunque no estará falto de enfrentamientos musicales.', Manga),
+--     ('Kaguya-Sama: Love Is War 01', '["Peso 0,3 kg", "Dimensiones 18 x 15 x 3 cm", "Editorial Editorial", "País de origen España", "Demografía/Género Comedia, Escolar, Psicológico, Romance, SEINEN"]', 9889, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2021/10/kaguya1.jpg', 'La renombrada Academia Shuchiin tiene a dos destacados estudiantes: Miyuki Shirogane y Kaguya Shinomiya. Los dos son estudiantes modélicos: están entre los mejores de Japón, son el orgullo de profesores y alumnos por igual y además, mientras que Miyuki es el presidente del consejo estudiantil, Kaguya es la vicepresidenta. Por si fuera poco, Kaguya pertenece a una adinerada familia y sobresale en gran variedad de disciplinas, aunque sus orígenes la hacen una persona fría y orgullosa. Parecen la pareja perfecta a ojos de todos, aunque no estén juntos. Pero como el roce hace el cariño, se han pillado el uno del otro. Sin embargo su enorme orgullo, hace que no puedan decirse lo que sienten y empieza una infernal batalla entre ellos para conseguir que el otro confiese lo que siente. Las estrategias para lograr la confesión del contrario se suceden e irán escalando y sólo uno puede emerger victorioso en esta pasional lucha romántica. El honor de los dos está en juego!', Manga),
+--     ('Medalist 01', '["Peso 0,3 kg", "Dimensiones 18 x 15 x 3 cm", "Editorial Editorial", "País de origen España", "Demografía/Género Deportivo, SEINEN"]', 9889, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2023/01/9788419600097.jpg', 'Tsukasa es un patinador que, tras haber dejado atrás su sueño de convertirse en un atleta de elite por problemas económicos, trabaja realizando espectáculos de patinaje sobre hielo. Pero todo cambia cuando conoce a Inori, una niña que le paga con gusanos al encargado de una pista para que le permita patinar sin que nadie se entere y que sueña con convertirse en una atleta del hielo, pese a que su madre esté totalmente en contra de ello. Así, gracias a la tenacidad que muestra la niña, Tsukasa decide convertirse en su entrenador y buscará ayudar a Inori en el difícil mundo del patinaje artístico.', Manga),
+--     ('Slam Dunk 04', '["Peso 0,3 kg", "Dimensiones 18 x 15 x 3 cm", "Editorial Editorial", "País de origen España", "Demografía/Género Acción, Comedia, Deportivo, SHONEN"]', 10709, 'https://damemimanga.cl/sitio-web/wp-content/uploads/2023/03/9788419673671.jpg', 'Presentamos Slam Dunk New Edition en formato B6! Esta nueva edición del manga cuenta con sólo 20 tomos, sobrecubiertas inéditas en splash y una cubierta interior con textura que simula una pelota de baloncesto. Humor, romance y autosuperación en uno de los mejores spokon de la historia. La mítica obra la protagoniza Hanamichi Sakuragi, un gamberrillo de instituto que descubre la pasión del baloncesto y acaba convirtiéndose en un gran jugador intentando ligarse a su compañera de clase Haruko Akagi. Ante él tendrá como obstáculos a su compañero de equipo, archirival y superjugador Kaede Rukawa, del cual Haruko está enamorada, al capitán del equipo Takenori, que es hermano de Haruko y a su mayor enemigo: su explosivo carácter. El memorable manga es obra de Takehiko Inoue, que muestra su pasión por el basket viñeta a viñeta, cuenta con el genial dibujo al que nos tiene acostumbrados y que se ha vuelto a demostrar con unas nuevas e increíbles ilustraciones de portada14', Manga);
 
 
 
@@ -92,7 +75,20 @@ CREATE TABLE favoritos (
   id_plato integer REFERENCES platos (id_plato) ON DELETE CASCADE
 );
 
-CREATE TABLE pedidos (
+--TABLA DE PRODUCTOS--
+CREATE TABLE
+	productos (
+		producto_id SERIAL PRIMARY KEY,
+		titulo VARCHAR(100),
+		editorial VARCHAR(100),
+		descripcion VARCHAR(500),
+		precio INT,
+		imagen VARCHAR(500),
+		usuario_id INT,
+		CONSTRAINT fk_usuarioid FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id) ON DELETE CASCADE
+	);
+
+/* CREATE TABLE pedidos (
 	id_pedido serial primary key,
 	fecha date,
 	forma_de_pago varchar (10),
@@ -100,7 +96,7 @@ CREATE TABLE pedidos (
 	estado_pedido varchar (20),
 	cantidad int,
 	id_usuario integer REFERENCES usuarios (id_usuario) ON DELETE CASCADE,
-	id_plato integer REFERENCES platos (id_plato) ON DELETE CASCADE
+	id_plato integer REFERENCES platos (id_plato) ON DELETE CASCADE */
 );
 
 CREATE TABLE carrito (

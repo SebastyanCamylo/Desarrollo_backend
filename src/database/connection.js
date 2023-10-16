@@ -4,7 +4,7 @@ dotenv.config();
 import pkg from "pg";
 const {Pool} = pkg;
 
-
+//remder pendiente!
 
 
 export const pool = new Pool({allowExitOnIdle: true});

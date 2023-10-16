@@ -27,7 +27,7 @@ describe ("Probando las rutas del backend", ()=>{
             direccion: 'Calle Prinpipe de galez 123',
             //numero_de_direccion: '123',
             correo: 'test2023@gmail.com',
-            password: '123456',
+            password: '1234',
             rol: 'user',
         };
     
@@ -85,7 +85,7 @@ describe("PUT /api/v1/user/update/:id_usuario/",() => {
         apellido: "test",
         rut: "12345-9",
         //telefono: "1234560",
-        direccion: "Calle juan",
+        direccion: "Calle juan 123",
         //numero_de_direccion: "123",
         correo: "actualizado3@gmail.com",
         password: "",
@@ -109,7 +109,7 @@ describe("PUT /api/v1/user/update/:id_usuario/",() => {
           apellido: "test3",
           rut: "12345-9",
           //telefono: "1234560",
-          direccion: "Calle juan123",
+          direccion: "Calle juan 123",
           //numero_de_direccion: "123",
           correo: "actualizado@gmail.com",
           password: "",
